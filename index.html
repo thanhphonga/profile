@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff0f7">
+<meta name="description" content="Góc nhỏ pastel của Thanh Phong.">
+<title>Thanh Phong  — Little Corner</title>
+<style>
+:root{--pink:#f58ab6;--pink-dark:#b94f7f;--lilac:#c5a9f5;--ink:#503c54;--muted:#886e8c;--glass:rgba(255,248,252,.84)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:"Trebuchet MS",system-ui,-apple-system,sans-serif;background:#fff5fa;overflow-x:hidden}
+#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+.hero{min-height:720px;position:relative;display:flex;align-items:center;padding:105px max(5vw,24px) 65px;overflow:hidden;background:linear-gradient(90deg,rgba(28,17,31,.65),rgba(55,30,52,.28) 55%,rgba(31,19,36,.08)),url("avatar.webp") center 36%/cover no-repeat}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#fff4f9 0%,transparent 23%,transparent 80%,rgba(25,15,30,.22));pointer-events:none}
+.nav{position:absolute;z-index:2;top:22px;left:50%;transform:translateX(-50%);width:min(1180px,calc(100% - 40px));display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 15px;border:1px solid #ffffff8c;border-radius:999px;background:#fff4f6b8;backdrop-filter:blur(16px);box-shadow:0 8px 25px #3c17301a}
+.brand{font-weight:900;color:#a84e7c;white-space:nowrap}.navlinks{display:flex;align-items:center;gap:clamp(8px,2vw,25px)}.nav a{color:#77536e;text-decoration:none;font-size:.86rem;font-weight:700}.nav a:hover{color:#db6097}.moon{border:0;background:#fff;border-radius:50%;width:38px;height:38px;font-size:1.15rem;color:#bd6590;cursor:pointer}
+.hero-content{z-index:1;position:relative;width:min(1180px,100%);margin:0 auto;color:#fff;text-shadow:0 2px 16px #21132277}.hello{font-family:"Trebuchet MS",cursive;font-size:clamp(1.8rem,4vw,3rem);margin:0 0 8px}.hello span{color:#ffd6e8}
+h1{font-size:clamp(3rem,8vw,6.5rem);line-height:.98;letter-spacing:.02em;margin:0;color:#ffb7d5;-webkit-text-stroke:1px #fff;text-shadow:0 5px 0 #d86d9e,0 9px 25px #4a163b80}
+.tagline{font-size:clamp(1rem,2vw,1.2rem);line-height:1.7;margin:22px 0;max-width:480px}
+.socials{display:flex;flex-wrap:wrap;gap:10px}.pill{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#fff2f8;color:#a34e78;border:1px solid #fff;border-radius:999px;padding:11px 16px;font-size:.88rem;font-weight:800;box-shadow:0 5px 16px #34182c26;transition:.2s}.pill:hover{transform:translateY(-3px);background:#fff}
+main{position:relative;z-index:1;margin-top:-35px;padding:0 24px 40px}.container{max-width:1180px;margin:auto}.panel{background:var(--glass);border:1px solid #fff;border-radius:26px;box-shadow:0 12px 40px #d88ab62b;backdrop-filter:blur(14px)}
+.about{display:grid;grid-template-columns:minmax(220px,.8fr) 1.4fr;gap:28px;padding:28px;align-items:center}.avatar-frame{width:min(100%,330px);aspect-ratio:1;border-radius:50%;padding:7px;margin:auto;background:linear-gradient(135deg,#ff9bc5,#fff,#c6a8ff);box-shadow:0 0 0 4px #fff,0 0 28px #ee8dbb77;position:relative}.avatar-frame img{width:100%;height:100%;object-fit:cover;object-position:center 35%;border-radius:50%;border:3px solid white}.avatar-frame:after{content:"♡";position:absolute;right:0;bottom:12%;font-size:2rem;color:#ed77a8;text-shadow:0 2px #fff}
+.section-title{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 13px;color:#a94f7c}.section-title span{color:#f18cb8}.about p{line-height:1.75;margin:0 0 15px}.details{display:grid;gap:7px}.detail{padding:9px 12px;border-radius:12px;background:#fce8f1b8;font-size:.9rem}.detail b{margin-right:8px;color:#b85d88}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}.stat{padding:21px 18px;min-height:145px}.stat-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#fff;font-size:1.5rem;box-shadow:0 4px 14px #dca3c733;margin-bottom:10px}.stat h3{margin:0 0 6px;font-size:1.05rem}.stat p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.55}
+.projects{padding:25px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.section-head .section-title{margin:0}.view-all{background:#e985ad;color:white;text-decoration:none;padding:10px 15px;border-radius:999px;font-weight:800;font-size:.82rem}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.project{overflow:hidden;background:#fff9fc;border:1px solid #f9dbe9;border-radius:17px;transition:.22s}.project:hover{transform:translateY(-5px);box-shadow:0 12px 25px #d88ab62b}.project-visual{height:135px;display:grid;place-items:center;font-size:3.2rem;background:linear-gradient(135deg,#f6c9df,#d9d0ff)}.project:nth-child(2) .project-visual{background:linear-gradient(135deg,#ddd5ff,#ffcde2)}.project:nth-child(3) .project-visual{background:linear-gradient(135deg,#ffe3d7,#e4d8ff)}.project-body{padding:15px}.project h3{margin:0 0 7px;font-size:1rem}.project p{font-size:.87rem;line-height:1.55;color:var(--muted);margin:0 0 12px}.arrow{color:#c55d8e;font-size:1.3rem;text-align:right}
+.quote{margin-top:20px;padding:25px 30px;display:flex;align-items:center;gap:15px;color:#ad6488;font-size:clamp(1rem,2.4vw,1.3rem);font-style:italic;line-height:1.6}.quote-mark{font-size:3.2rem;line-height:1;color:#df91b5;font-weight:900}
+footer{text-align:center;padding:5px 20px 30px;color:#b17f9c;font-size:.82rem}
+.dark{--ink:#f8e9f1;--muted:#d0b5c8;--glass:rgba(44,29,48,.87);background:#201522;color:var(--ink)}.dark main{color:var(--ink)}.dark .panel{border-color:#6d4965}.dark .detail,.dark .project{background:#39263b;border-color:#68465e}.dark .detail{color:#f6dce9}.dark .project-visual{filter:saturate(.8)}.dark .nav{background:#302036c9;border-color:#74516c}.dark .nav a,.dark .brand{color:#ffd5e7}.dark .quote{color:#f0b6d0}.dark footer{color:#d6a8c1}
+
+/* Sakura Café Jazz mini player */
+.music-player{position:fixed;right:18px;bottom:18px;z-index:20;display:flex;align-items:center;gap:10px;padding:10px 13px;border:1px solid #fff;border-radius:20px;background:rgba(255,245,250,.92);color:#a94f7c;box-shadow:0 8px 28px #d88ab64a;backdrop-filter:blur(14px);max-width:calc(100vw - 28px)}
+.music-toggle{width:42px;height:42px;flex:0 0 42px;border:0;border-radius:50%;background:linear-gradient(135deg,#f58ab6,#c5a9f5);color:white;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 12px #d88ab655}
+.music-meta{min-width:0;display:flex;flex-direction:column;gap:3px}
+.music-title{font-size:.78rem;font-weight:900;white-space:nowrap}
+.music-subtitle{font-size:.67rem;color:#a17c98;white-space:nowrap}
+.music-volume{width:65px;accent-color:#e985ad;cursor:pointer}
+.dark .music-player{background:rgba(44,29,48,.94);border-color:#76536d;color:#ffd5e7}
+.dark .music-subtitle{color:#d0b5c8}
+@media(max-width:420px){.music-player{right:10px;bottom:10px;gap:7px;padding:8px 10px}.music-volume{width:48px}.music-title{font-size:.72rem}.music-subtitle{font-size:.62rem}}
+
+@media(max-width:760px){.hero{min-height:680px;background-position:58% center;padding-top:110px;align-items:flex-end}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(34,18,33,.72),transparent 88%)}.nav{width:calc(100% - 22px);top:11px;padding:8px 10px}.brand{font-size:.78rem}.navlinks{gap:9px}.nav a{font-size:.7rem}.navlinks a:nth-child(3),.navlinks a:nth-child(4){display:none}.moon{width:32px;height:32px}.hero-content{padding-bottom:15px}.about{grid-template-columns:1fr;padding:22px}.avatar-frame{width:205px}.stats{grid-template-columns:repeat(2,1fr);gap:10px}.stat{padding:16px;min-height:130px}.project-grid{grid-template-columns:1fr}.project{display:grid;grid-template-columns:115px 1fr}.project-visual{height:100%;min-height:140px;font-size:2.4rem}.project-body{padding:13px}.projects{padding:20px}.quote{padding:20px}.section-head{align-items:flex-start}.view-all{white-space:nowrap}}
+@media(max-width:390px){.navlinks{gap:7px}.navlinks a:nth-child(2){display:none}.brand{font-size:.72rem}.hero{min-height:620px}.pill{font-size:.8rem;padding:10px 12px}.project{grid-template-columns:95px 1fr}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<canvas id="petals" aria-hidden="true"></canvas>
+<header class="hero" id="home">
+  <nav class="nav" aria-label="Điều hướng">
+    <a class="brand" href="#home">watamiyue</a>
+    <div class="navlinks"><a href="#home">⌂ Trang chủ</a><a href="#about">Giới thiệu</a><a href="#skills">Kỹ năng</a><a href="#projects">Dự án</a><a href="#contact">Liên hệ</a></div>
+    <button class="moon" id="theme" aria-label="Đổi giao diện" title="Đổi giao diện">☾</button>
+  </nav>
+  <div class="hero-content">
+    <p class="hello">♧ sub bro!</p>
+    <h1>wata</h1>
+    <p class="tagline">Chỉ là một người bình thường<br>thích game, code và những thứ mới mẻ </p>
+    <div class="socials" id="contact">
+      <a class="pill" href="https://discord.gg/WJSEbtXNd" data-social="Discord">◈ Discord</a>
+      <a class="pill" href="https://www.facebook.com/phongvippro009" data-social="Facebook">f Facebook</a>
+      <a class="pill" href="https://www.tiktok.com/@thanhwind" data-social="TikTok">♪ TikTok</a>
+      <a class="pill" href="#projects">🎮 Game</a>
+    </div>
+  </div>
+</header>
+<main><div class="container">
+  <section class="panel about" id="about">
+    <div class="avatar-frame"><img src="avatar.webp" alt="Ảnh anime hoa anh đào được chọn làm avatar"></div>
+    <div>
+      <h2 class="section-title">🐱 Giới thiệu <span>♥</span></h2>
+      <p>Xin chào! Mình là <b>Thanh Phong</b>.<br>Hiện đang tìm hiểu về lập trình, game và nhiều thứ khác. Thích Minecraft, Discord bot, chỉnh PC và khám phá những điều mới. Đây là trang cá nhân nhỏ của mình để lưu lại thông tin và các dự án.</p>
+      <div class="details">
+        <div class="detail"><b>♡</b> Tuổi: 20</div>
+        <div class="detail"><b>⌖</b> Việt Nam</div>
+        <div class="detail"><b>♥</b> Thích game, code, linh kiện</div>
+        <div class="detail"><b>✿</b> Đang học và tìm hiểu thêm</div>
+      </div>
+    </div>
+  </section>
+  <section class="stats" id="skills">
+    <article class="panel stat"><div class="stat-icon">🎮</div><h3>Game</h3><p>Minecraft, Valorant…</p></article>
+    <article class="panel stat"><div class="stat-icon">💻</div><h3>Code</h3><p>HTML · CSS · JS<br>Discord Bot</p></article>
+    <article class="panel stat"><div class="stat-icon">♡</div><h3>Sở thích</h3><p>Nghe nhạc<br>Xem anime<br>Tùy chỉnh PC</p></article>
+    <article class="panel stat"><div class="stat-icon">⭐</div><h3>Mục tiêu</h3><p>Phát triển bản thân<br>Học thêm lập trình<br>Làm dự án thú vị</p></article>
+  </section>
+  <section class="panel projects" id="projects">
+    <div class="section-head"><h2 class="section-title">📁 từng là của nhau <span>♥</span></h2><a class="view-all" href="#contact">Kết nối →</a></div>
+    <div class="project-grid">
+      <article class="project"><div class="project-visual">🌸🎮</div><div class="project-body"><h3>Minecraft Server</h3><p>Xây dựng và tùy chỉnh server với những plugin thú vị.</p><div class="arrow">→</div></div></article>
+      <article class="project"><div class="project-visual">🤖💬</div><div class="project-body"><h3>Discord Bot</h3><p>Tạo bot tiện ích, lệnh vui và hệ thống điểm.</p><div class="arrow">→</div></div></article>
+      <article class="project"><div class="project-visual">🎀💻</div><div class="project-body"><h3>Web Profile</h3><p>Trang cá nhân được làm bằng HTML, CSS và JavaScript.</p><div class="arrow">→</div></div></article>
+    </div>
+  </section>
+  <section class="panel quote"><span class="quote-mark">“</span><span>Chỉ cần cố gắng mỗi ngày một chút,<br>thì mình sẽ trở thành phiên bản tốt hơn của chính mình. ♡</span><span>🐱</span></section>
+</div></main>
+<footer>Made with ♡ by Thanh Phong · Stay soft, stay kind ✿</footer>
+
+<div class="music-player" aria-label="Trình phát Sakura Café Jazz">
+  <button class="music-toggle" id="musicToggle" type="button" aria-label="Bật nhạc" title="Bật/tắt nhạc">♫</button>
+  <div class="music-meta">
+    <span class="music-title">Sakura Café Jazz 🌸</span>
+    <span class="music-subtitle" id="musicStatus">Nhấn để nghe nhạc</span>
+  </div>
+  <input class="music-volume" id="musicVolume" type="range" min="0" max="1" step="0.05" value="0.3" aria-label="Âm lượng">
+</div>
+<audio id="bgMusic" src="music.mp3" loop preload="none"></audio>
+
+<script>
+document.getElementById("theme").addEventListener("click",()=>{document.body.classList.toggle("dark");document.getElementById("theme").textContent=document.body.classList.contains("dark")?"☀":"☾";});
+document.querySelectorAll("[data-social]").forEach(a=>a.addEventListener("click",e=>{if(a.getAttribute("href")==="#"){e.preventDefault();alert("Thêm link "+a.dataset.social+" của bạn vào index.html nhé!");}}));
+const c=document.getElementById("petals"),x=c.getContext("2d");let w,h,petals=[];const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function resize(){const d=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;c.width=w*d;c.height=h*d;c.style.width=w+"px";c.style.height=h+"px";x.setTransform(d,0,0,d,0,0);petals=Array.from({length:Math.min(32,Math.floor(w/24))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*5+3,vy:Math.random()*.7+.25,vx:Math.random()*.5-.25,rot:Math.random()*6,vr:Math.random()*.025-.012,alpha:Math.random()*.45+.18}));draw();}
+function draw(){x.clearRect(0,0,w,h);for(const p of petals){x.save();x.globalAlpha=p.alpha;x.translate(p.x,p.y);x.rotate(p.rot);x.fillStyle=Math.random()>.5?"#f4a2c4":"#d6bdf8";x.beginPath();x.ellipse(0,0,p.r*.65,p.r*1.35,0,0,Math.PI*2);x.fill();x.restore();if(!reduced){p.y+=p.vy;p.x+=p.vx;p.rot+=p.vr;if(p.y>h+15){p.y=-15;p.x=Math.random()*w;}}}if(!reduced)requestAnimationFrame(draw);}
+addEventListener("resize",resize);resize();
+
+const bgMusic=document.getElementById("bgMusic");
+const musicToggle=document.getElementById("musicToggle");
+const musicStatus=document.getElementById("musicStatus");
+const musicVolume=document.getElementById("musicVolume");
+bgMusic.volume=Number(musicVolume.value);
+musicVolume.addEventListener("input",()=>{bgMusic.volume=Number(musicVolume.value);});
+function updateMusicUI(){
+  const playing=!bgMusic.paused;
+  musicToggle.textContent=playing?"Ⅱ":"♫";
+  musicToggle.setAttribute("aria-label",playing?"Tắt nhạc":"Bật nhạc");
+  musicStatus.textContent=playing?"Đang phát · piano jazz":"Nhấn để nghe nhạc";
+}
+musicToggle.addEventListener("click",async()=>{
+  if(bgMusic.paused){
+    try{await bgMusic.play();}catch(err){musicStatus.textContent="Không thấy music.mp3";alert("Chưa phát được nhạc. Hãy đặt file music.mp3 cạnh index.html và kiểm tra tên file nhé.");}
+  }else{bgMusic.pause();}
+  updateMusicUI();
+});
+bgMusic.addEventListener("play",updateMusicUI);
+bgMusic.addEventListener("pause",updateMusicUI);
+bgMusic.addEventListener("error",()=>{musicStatus.textContent="Thêm file music.mp3";});
+/* Thử tự phát; trình duyệt có thể yêu cầu người xem bấm nút ♫ trước. */
+bgMusic.play().then(updateMusicUI).catch(updateMusicUI);
+
+</script>
+</body>
+</html>
